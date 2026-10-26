@@ -1,0 +1,436 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "pytorch": "2.6.0+cpu",
+    "torchvision": "0.21.0+cpu",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "processor": "",
+    "device": "cpu",
+    "torch_threads": 2
+  },
+  "protocol": {
+    "epochs": 5,
+    "batch_size": 128,
+    "seed": 2026,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0,
+    "initialization": "PyTorch defaults; all learned layers use bias",
+    "dtype": "float32",
+    "num_workers": 0,
+    "drop_last": false,
+    "checkpoint_selection": "minimum validation mean cross-entropy; earliest tie",
+    "train_size": 10000,
+    "validation_size": 2000,
+    "test_size": 10000,
+    "split_sha256": "e779c790d5db16b8a8fa3b080088941d9e9dc700455bd5536dc950d883a6e008",
+    "dataset_mirror": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/",
+    "test_evaluations_per_model": 1
+  },
+  "batch_demo": {
+    "image_shape": [
+      128,
+      1,
+      28,
+      28
+    ],
+    "label_shape": [
+      128
+    ],
+    "image_dtype": "torch.float32",
+    "label_dtype": "torch.int64",
+    "pixel_min": 0.0,
+    "pixel_max": 1.0
+  },
+  "architecture": {
+    "parameter_counts": {
+      "MLP-32": 25450,
+      "MLP-128": 101770,
+      "CNN": 5146
+    },
+    "cnn_dummy_shapes": [
+      {
+        "layer": "Input",
+        "shape": [
+          2,
+          1,
+          28,
+          28
+        ]
+      },
+      {
+        "layer": "Conv2d",
+        "shape": [
+          2,
+          6,
+          24,
+          24
+        ]
+      },
+      {
+        "layer": "ReLU",
+        "shape": [
+          2,
+          6,
+          24,
+          24
+        ]
+      },
+      {
+        "layer": "MaxPool2d",
+        "shape": [
+          2,
+          6,
+          12,
+          12
+        ]
+      },
+      {
+        "layer": "Conv2d",
+        "shape": [
+          2,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "layer": "ReLU",
+        "shape": [
+          2,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "layer": "MaxPool2d",
+        "shape": [
+          2,
+          12,
+          6,
+          6
+        ]
+      },
+      {
+        "layer": "Flatten",
+        "shape": [
+          2,
+          432
+        ]
+      },
+      {
+        "layer": "Linear",
+        "shape": [
+          2,
+          10
+        ]
+      }
+    ],
+    "cnn_learned_layer_counts": {
+      "layers.0": 156,
+      "layers.3": 660,
+      "layers.7": 4330
+    }
+  },
+  "models": {
+    "MLP-32": {
+      "selected_epoch": 5,
+      "selected_train": {
+        "cross_entropy": 0.4938056354999542,
+        "accuracy": 0.8324,
+        "examples": 10000
+      },
+      "selected_validation": {
+        "cross_entropy": 0.5201826286315918,
+        "accuracy": 0.832,
+        "examples": 2000
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "train": {
+            "cross_entropy": 0.8202070382118225,
+            "accuracy": 0.7351,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.8348852195739747,
+            "accuracy": 0.727,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "cross_entropy": 0.6367486043930054,
+            "accuracy": 0.7862,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.6565049953460693,
+            "accuracy": 0.778,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "cross_entropy": 0.5743716432094574,
+            "accuracy": 0.8077,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5925724391937256,
+            "accuracy": 0.8015,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "cross_entropy": 0.528164023399353,
+            "accuracy": 0.8182,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5484948425292969,
+            "accuracy": 0.823,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "cross_entropy": 0.4938056354999542,
+            "accuracy": 0.8324,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5201826286315918,
+            "accuracy": 0.832,
+            "examples": 2000
+          }
+        }
+      ],
+      "parameter_count": 25450,
+      "training_seconds": 2.609287609000006,
+      "checkpoint_path": "/workspace/ee4745_cache/checkpoints/mlp-32.pt",
+      "test": {
+        "cross_entropy": 0.543592255783081,
+        "accuracy": 0.8128,
+        "examples": 10000
+      }
+    },
+    "MLP-128": {
+      "selected_epoch": 5,
+      "selected_train": {
+        "cross_entropy": 0.4296391041278839,
+        "accuracy": 0.8511,
+        "examples": 10000
+      },
+      "selected_validation": {
+        "cross_entropy": 0.45863908195495606,
+        "accuracy": 0.8425,
+        "examples": 2000
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "train": {
+            "cross_entropy": 0.6309501750946045,
+            "accuracy": 0.7936,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.6456042194366455,
+            "accuracy": 0.7975,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "cross_entropy": 0.5379807535648345,
+            "accuracy": 0.8123,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5620664577484131,
+            "accuracy": 0.812,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "cross_entropy": 0.5011117184638977,
+            "accuracy": 0.8222,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5180365924835205,
+            "accuracy": 0.8205,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "cross_entropy": 0.4414200435638428,
+            "accuracy": 0.8466,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.4745415554046631,
+            "accuracy": 0.843,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "cross_entropy": 0.4296391041278839,
+            "accuracy": 0.8511,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.45863908195495606,
+            "accuracy": 0.8425,
+            "examples": 2000
+          }
+        }
+      ],
+      "parameter_count": 101770,
+      "training_seconds": 3.405057202999984,
+      "checkpoint_path": "/workspace/ee4745_cache/checkpoints/mlp-128.pt",
+      "test": {
+        "cross_entropy": 0.4928426631450653,
+        "accuracy": 0.8282,
+        "examples": 10000
+      }
+    },
+    "CNN": {
+      "selected_epoch": 5,
+      "selected_train": {
+        "cross_entropy": 0.5521925403118133,
+        "accuracy": 0.7904,
+        "examples": 10000
+      },
+      "selected_validation": {
+        "cross_entropy": 0.5677070674896241,
+        "accuracy": 0.7925,
+        "examples": 2000
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "train": {
+            "cross_entropy": 0.7792723554611206,
+            "accuracy": 0.7365,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.7981218776702881,
+            "accuracy": 0.736,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "cross_entropy": 0.6679693551063538,
+            "accuracy": 0.7622,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.6862205772399902,
+            "accuracy": 0.757,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "cross_entropy": 0.6112327865600586,
+            "accuracy": 0.7863,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.6208904685974121,
+            "accuracy": 0.78,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "cross_entropy": 0.5608523930072784,
+            "accuracy": 0.7939,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5761902656555176,
+            "accuracy": 0.7935,
+            "examples": 2000
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "cross_entropy": 0.5521925403118133,
+            "accuracy": 0.7904,
+            "examples": 10000
+          },
+          "validation": {
+            "cross_entropy": 0.5677070674896241,
+            "accuracy": 0.7925,
+            "examples": 2000
+          }
+        }
+      ],
+      "parameter_count": 5146,
+      "training_seconds": 15.310998594000012,
+      "checkpoint_path": "/workspace/ee4745_cache/checkpoints/cnn.pt",
+      "test": {
+        "cross_entropy": 0.5878574234485626,
+        "accuracy": 0.778,
+        "examples": 10000
+      }
+    }
+  },
+  "protocol_events": [
+    {
+      "event": "checkpoint_selected",
+      "model": "MLP-32",
+      "seconds_from_run_start": 6.683990563999998
+    },
+    {
+      "event": "checkpoint_selected",
+      "model": "MLP-128",
+      "seconds_from_run_start": 10.090720363000003
+    },
+    {
+      "event": "checkpoint_selected",
+      "model": "CNN",
+      "seconds_from_run_start": 25.403648556000007
+    },
+    {
+      "event": "test_evaluated_once",
+      "model": "MLP-32",
+      "seconds_from_run_start": 25.743682163000017
+    },
+    {
+      "event": "test_evaluated_once",
+      "model": "MLP-128",
+      "seconds_from_run_start": 25.970635964999985
+    },
+    {
+      "event": "test_evaluated_once",
+      "model": "CNN",
+      "seconds_from_run_start": 27.00726017200003
+    }
+  ],
+  "total_seconds": 27.014436800999988
+}

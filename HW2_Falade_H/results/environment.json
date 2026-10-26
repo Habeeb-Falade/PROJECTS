@@ -1,0 +1,20 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "device": "CPU",
+  "logical_cpus_available": 5,
+  "compute_threads_per_experiment": 2,
+  "cpu_model": "Intel Xeon Platinum 8573C",
+  "packages": {
+    "numpy": "2.3.5",
+    "torch": "2.6.0+cpu",
+    "torchvision": "0.21.0+cpu",
+    "matplotlib": "3.10.8",
+    "Pillow": "12.3.0",
+    "grad-cam": "1.5.7",
+    "reportlab": "4.4.9",
+    "opencv-python-headless": "5.0.0.93",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0"
+  }
+}

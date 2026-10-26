@@ -1,0 +1,301 @@
+{
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.6.0+cpu",
+    "torchvision": "0.21.0+cpu",
+    "grad-cam": "1.5.7",
+    "numpy": "2.3.5",
+    "Pillow": "12.3.0"
+  },
+  "device": "CPU",
+  "torch_threads": 2,
+  "images": [
+    {
+      "id": "dog",
+      "file": "dog.jpg",
+      "difficulty": "clear",
+      "source_url": "https://raw.githubusercontent.com/pytorch/hub/master/images/dog.jpg",
+      "source_page": "https://github.com/pytorch/hub/blob/master/images/dog.jpg",
+      "description_before_predictions": "A fluffy white dog with pointed ears sits on green grass, with dark foliage behind it. The dog is the clear main subject; its exact breed is not independently established.",
+      "sha256": "f3f87bb8ab3c26c7ecfd3ac60421d7f32b0503d1d6c5baf8bac42ed93d86351a",
+      "size_pixels": [
+        1546,
+        1213
+      ]
+    },
+    {
+      "id": "cat",
+      "file": "cat.png",
+      "difficulty": "clear",
+      "source_url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.19.3/skimage/data/chelsea.png",
+      "source_page": "https://github.com/scikit-image/scikit-image/blob/v0.19.3/skimage/data/chelsea.png",
+      "description_before_predictions": "A close-up of a brown-orange striped cat shows its face, green eyes, whiskers, and part of its chest. The image identifies a domestic cat clearly, but does not establish a breed.",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "size_pixels": [
+        451,
+        300
+      ]
+    },
+    {
+      "id": "bus",
+      "file": "bus.jpg",
+      "difficulty": "hard",
+      "source_url": "https://raw.githubusercontent.com/ultralytics/assets/main/im/bus.jpg",
+      "source_page": "https://github.com/ultralytics/assets/blob/main/im/bus.jpg",
+      "description_before_predictions": "A blue-and-white city bus is parked on a sunny street in front of a building. Several pedestrians partially occlude it, and bollards, pavement, signs, and windows add clutter; the bus is the main object of interest.",
+      "sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+      "size_pixels": [
+        810,
+        1080
+      ]
+    }
+  ],
+  "models": {
+    "ResNet-18": {
+      "weights": "ResNet18_Weights.IMAGENET1K_V1",
+      "weights_url": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+      "transforms": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "input_size": [
+        224
+      ],
+      "parameter_count": 11689512
+    },
+    "MobileNetV3-Small": {
+      "weights": "MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+      "weights_url": "https://download.pytorch.org/models/mobilenet_v3_small-047dcff4.pth",
+      "transforms": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "input_size": [
+        224
+      ],
+      "parameter_count": 2542856
+    }
+  },
+  "predictions": [
+    {
+      "image_id": "dog",
+      "model": "ResNet-18",
+      "weights": "ResNet18_Weights.IMAGENET1K_V1",
+      "top3": [
+        {
+          "class_index": 258,
+          "label": "Samoyed",
+          "probability": 0.8846223950386047,
+          "percent": 88.46223950386047
+        },
+        {
+          "class_index": 279,
+          "label": "Arctic fox",
+          "probability": 0.0458049513399601,
+          "percent": 4.58049513399601
+        },
+        {
+          "class_index": 270,
+          "label": "white wolf",
+          "probability": 0.044276148080825806,
+          "percent": 4.427614808082581
+        }
+      ],
+      "correctness": "partly",
+      "reason": "The dog category and visible appearance are plausible, but the exact Samoyed breed is not independently established."
+    },
+    {
+      "image_id": "cat",
+      "model": "ResNet-18",
+      "weights": "ResNet18_Weights.IMAGENET1K_V1",
+      "top3": [
+        {
+          "class_index": 285,
+          "label": "Egyptian cat",
+          "probability": 0.39144155383110046,
+          "percent": 39.144155383110046
+        },
+        {
+          "class_index": 282,
+          "label": "tiger cat",
+          "probability": 0.3861004412174225,
+          "percent": 38.61004412174225
+        },
+        {
+          "class_index": 281,
+          "label": "tabby",
+          "probability": 0.2175511121749878,
+          "percent": 21.75511121749878
+        }
+      ],
+      "correctness": "partly",
+      "reason": "A domestic cat is present, but the predicted breed is not independently established."
+    },
+    {
+      "image_id": "bus",
+      "model": "ResNet-18",
+      "weights": "ResNet18_Weights.IMAGENET1K_V1",
+      "top3": [
+        {
+          "class_index": 654,
+          "label": "minibus",
+          "probability": 0.8251328468322754,
+          "percent": 82.51328468322754
+        },
+        {
+          "class_index": 734,
+          "label": "police van",
+          "probability": 0.11523766070604324,
+          "percent": 11.523766070604324
+        },
+        {
+          "class_index": 757,
+          "label": "recreational vehicle",
+          "probability": 0.008255640976130962,
+          "percent": 0.8255640976130962
+        }
+      ],
+      "correctness": "partly",
+      "reason": "It is a bus, but the image alone does not establish the more specific minibus subtype."
+    },
+    {
+      "image_id": "dog",
+      "model": "MobileNetV3-Small",
+      "weights": "MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+      "top3": [
+        {
+          "class_index": 258,
+          "label": "Samoyed",
+          "probability": 0.7578862905502319,
+          "percent": 75.7886290550232
+        },
+        {
+          "class_index": 279,
+          "label": "Arctic fox",
+          "probability": 0.06537311524152756,
+          "percent": 6.537311524152756
+        },
+        {
+          "class_index": 259,
+          "label": "Pomeranian",
+          "probability": 0.06518547981977463,
+          "percent": 6.518547981977463
+        }
+      ],
+      "correctness": "partly",
+      "reason": "The dog category and visible appearance are plausible, but the exact Samoyed breed is not independently established."
+    },
+    {
+      "image_id": "cat",
+      "model": "MobileNetV3-Small",
+      "weights": "MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+      "top3": [
+        {
+          "class_index": 282,
+          "label": "tiger cat",
+          "probability": 0.4930862486362457,
+          "percent": 49.30862486362457
+        },
+        {
+          "class_index": 285,
+          "label": "Egyptian cat",
+          "probability": 0.29658666253089905,
+          "percent": 29.658666253089905
+        },
+        {
+          "class_index": 281,
+          "label": "tabby",
+          "probability": 0.2092297524213791,
+          "percent": 20.92297524213791
+        }
+      ],
+      "correctness": "yes",
+      "reason": "The visible domestic cat has a striped tabby coat; this does not verify a breed."
+    },
+    {
+      "image_id": "bus",
+      "model": "MobileNetV3-Small",
+      "weights": "MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+      "top3": [
+        {
+          "class_index": 654,
+          "label": "minibus",
+          "probability": 0.6625035405158997,
+          "percent": 66.25035405158997
+        },
+        {
+          "class_index": 734,
+          "label": "police van",
+          "probability": 0.20163695514202118,
+          "percent": 20.163695514202118
+        },
+        {
+          "class_index": 874,
+          "label": "trolleybus",
+          "probability": 0.05909009650349617,
+          "percent": 5.909009650349617
+        }
+      ],
+      "correctness": "partly",
+      "reason": "It is a bus, but the image alone does not establish the more specific minibus subtype."
+    }
+  ],
+  "grad_cam": [
+    {
+      "image_id": "dog",
+      "target": {
+        "class_index": 258,
+        "label": "Samoyed",
+        "probability": 0.8846223950386047,
+        "percent": 88.46223950386047
+      },
+      "figure": "figures/cam_dog.png",
+      "heatmap_min": 0.0,
+      "heatmap_max": 0.9999998807907104,
+      "heatmap_mean": 0.3163991868495941,
+      "has_spatial_contrast": true,
+      "interpretation": "The warmest region is around the dog's face, ears, and upper neck, with much cooler grass, foliage, and lower body. This aligns with salient dog features and helps interpret the animal prediction. It does not independently establish the Samoyed breed."
+    },
+    {
+      "image_id": "bus",
+      "target": {
+        "class_index": 654,
+        "label": "minibus",
+        "probability": 0.8251328468322754,
+        "percent": 82.51328468322754
+      },
+      "figure": "figures/cam_bus.png",
+      "heatmap_min": 0.0,
+      "heatmap_max": 0.9999998807907104,
+      "heatmap_mean": 0.3933802545070648,
+      "has_spatial_contrast": true,
+      "interpretation": "The strongest red region covers the bus's front/window area, with yellow support extending along its upper side windows; the pavement and lower pedestrians are relatively blue. The coarse map also overlaps part of a pedestrian, so it suggests vehicle-related cues without isolating the bus precisely. It helps explain the broad bus prediction but does not verify the specific minibus subtype."
+    }
+  ],
+  "procedure": {
+    "trained_or_finetuned": false,
+    "mode": "eval",
+    "input_color": "RGB",
+    "probability": "softmax(dim=1)",
+    "transforms": "Each weight object's transforms() used without modification",
+    "cam_layer": "ResNet-18 layer4[-1]",
+    "cam_target": "Each image's own ResNet-18 top-predicted class logit",
+    "cam_context": "Outside torch.no_grad() and torch.inference_mode()"
+  },
+  "comparison": "Both models rank Samoyed first for the dog and minibus first for the hard street scene, with ResNet-18 assigning higher top probabilities (88.46% versus 75.79% for the dog; 82.51% versus 66.25% for the bus). They disagree on the cat: ResNet-18 ranks Egyptian cat first, narrowly above tiger cat, whereas MobileNetV3-Small ranks tiger cat first. The visible stripes support a domestic-cat/coat-pattern interpretation, but exact breeds are not independently established and the bus subtype remains uncertain. A higher softmax value does not guarantee correctness, and these three images do not establish a general model ranking.",
+  "cam_limitations": "Grad-CAM is a coarse visual clue, not a segmentation mask or proof of causation. Each heatmap is independently normalized, so its colors cannot compare confidence across images."
+}

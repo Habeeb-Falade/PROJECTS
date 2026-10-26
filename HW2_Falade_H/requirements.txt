@@ -1,0 +1,9 @@
+# Direct dependency versions used for the recorded experiments.
+# Install the CPU torch/torchvision wheels first, as described in README.md.
+numpy==2.3.5
+torch==2.6.0
+torchvision==0.21.0
+matplotlib==3.10.8
+Pillow==12.3.0
+grad-cam==1.5.7
+reportlab==4.4.9
